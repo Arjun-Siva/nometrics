@@ -1,0 +1,38 @@
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+    const domainSelected = document.getElementById("domain-option");
+    const unitSelected = document.getElementById("unit-option");
+
+    //init
+    const unitsMap = {
+        length: {
+            units: ["nanometer", "micron", "millimeter", "centimeter", "inch", "foot", "yard", "meter", "kilometer", "mile", "light year", "parsec"],
+            default: "meter"
+        },
+        mass: {
+            units: ["microgram", "milligram", "gram", "ounce", "pound", "kilogram", "tonne", "solar mass"],
+            default: "kilogram"
+        }
+    };
+
+    const addRelevantUnitOptions = (domain) => {
+        unitSelected.innerHTML = '';
+        unitsMap[domain].units.forEach(unit => {
+            const optionElement = document.createElement("option");
+            optionElement.value = unit;
+            optionElement.textContent = unit;
+            unitSelected.appendChild(optionElement);
+            unitSelected.value = unitsMap[domain].default;
+        });
+    }
+
+    addRelevantUnitOptions(domainSelected.value);
+
+    domainSelected.addEventListener('change', (e) => {
+        addRelevantUnitOptions(e.target.value);
+    })
+
+
+</script>
+</html>

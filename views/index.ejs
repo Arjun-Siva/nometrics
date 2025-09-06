@@ -1,0 +1,87 @@
+<%- include('partials/header') %>
+<h1>Submit a Number</h1>
+<form action="/calculate" method="POST">
+    <!-- <label for="option">Choose an option:</label> -->
+    <select name="domain" id="domain-option">
+        <option value="length">Length</option>
+        <option value="mass">Mass</option>
+    </select>
+
+    <select name="unit" id="unit-option">
+        <!-- Filled dynamically -->
+    </select>
+
+    <!-- <label for="number">Enter a number:</label> -->
+    <input type="number" id="input-value" name="number" min="0.00000001" step="any" required>
+
+    <button type="submit">Transform</button>
+</form>
+
+<% if (value !==null) { %>
+    <div class="result">
+        <% if (domain==="length" ) { %>
+            <span id="user-value">
+                <%= numberValue %>
+                    <%= unit %>s
+            </span> is equivalent to <span id="computed-value">
+                <%= value %>
+                <%= name %>
+            </span>
+            <% } else if (domain==="mass" ) { %>
+                <span id="user-value">
+                    <%= numberValue %>
+                        <%= unit %>s
+                </span> weighs the sames as <span id="computed-value">
+                    <%= value %>
+                        <%= name %>
+                </span>
+            <% } %>
+    </div>
+<% } %>
+
+    <!-- carousel -->
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div id="carouselMemes" class="carousel slide carousel-fade bg-black"
+       style="width: 600px; height: 300px;">
+       
+    <div class="carousel-inner h-100">
+      <div class="carousel-item active h-100">
+        <img src="/images/meme1.jpeg" class="d-block mx-auto h-100"
+             style="object-fit: contain;" alt="meme 1">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="/images/meme2.jpg" class="d-block mx-auto h-100"
+             style="object-fit: contain;" alt="meme 2">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="/images/meme3.jpg" class="d-block mx-auto h-100"
+             style="object-fit: contain;" alt="meme 3">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="/images/meme4.jpg" class="d-block mx-auto h-100"
+             style="object-fit: contain;" alt="meme 4">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="/images/meme5.jpeg" class="d-block mx-auto h-100"
+             style="object-fit: contain;" alt="meme 5">
+      </div>
+      <div class="carousel-item h-100">
+        <img src="/images/meme6.jpeg" class="d-block mx-auto h-100"
+             style="object-fit: contain;" alt="meme 6">
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselMemes" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselMemes" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+
+<%- include('partials/footer') %>
