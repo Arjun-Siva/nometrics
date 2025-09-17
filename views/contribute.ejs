@@ -1,31 +1,54 @@
 <%- include('partials/header') %>
-    <!--TODO: Header -->
+
     <h1>Submit a Number</h1>
-    <form action="/contribute" method="POST">
-        <!-- <label for="option">Choose an option:</label> -->
-        <select name="domain" id="domain-option">
-            <option value="length">Length</option>
-            <option value="mass">Mass</option>
-        </select>
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="w-100" style="max-width: 400px;">
+            <form action="/contribute" method="POST">
+                <div class="form-group mb-3">
+                    <label for="domain-option">Measurement</label>
+                    <select name="domain" id="domain-option" class="form-control form-select">
+                        <option value="length">Length</option>
+                        <option value="mass">Mass</option>
+                    </select>
+                </div>
 
-        <select name="unit" id="unit-option">
-            <!-- Filled dynamically -->
-        </select>
+                <div class="form-group mb-3">
+                    <label for="unit-option">Unit</label>
+                    <select name="unit" id="unit-option" class="form-control form-select">
+                        <!-- Filled dynamically -->
+                    </select>
+                </div>
 
-        <label for="name">Name of the entity (in plural):</label>
-        <input type="text" id="input-name" name="name" minlength="2" maxlength="100" required>
-        <label for="value">Value in the selected unit:</label>
-        <input type="number" id="input-value" name="value" min="0.00000001" step="any" required>
-        <label for="source">Source (URL preferably):</label>
-        <input type="text" id="input-source" name="source" minlength="5" maxlength="250" required>
+                <div class="form-group mb-3">
+                    <label for="name">Name of the entity (in plural):</label>
+                    <input type="text" id="input-name" name="name" minlength="2" maxlength="100" required
+                        class="form-control" placeholder="example: asian elephants">
+                </div>
 
-        <button type="submit">Submit</button>
-    </form>
+                <div class="form-group mb-3">
+                    <label for="value">Value in the selected unit:</label>
+                    <input type="number" id="input-value" name="value" min="0.00000001" step="any" required
+                        class="form-control">
+                </div>
+                <div class="form-group mb-3">
+                    <label for="source">Source (URL preferably):</label>
+                    <input type="text" id="input-source" name="source" minlength="5" maxlength="250" required
+                        class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
 
-    <% if (message !== null) { %>
-        <div class="message">
-            <%= message.message %>
+
+            <% if (message !==null) { %>
+                <% if (message.state==0) { %>
+                    <div class="alert alert-success mt-3" role="alert">
+                        <% } else { %>
+                            <div class="alert alert-danger mt-3" role="alert">
+                                <% } %>
+                                    <%= message.message %>
+                            </div>
+                            <% } %>
+                    </div>
         </div>
-    <% } %>
 
-<%- include('partials/footer') %>
+        <%- include('partials/footer') %>
