@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const fetchData = require('./fetchData');
 const storeData = require('./storeData');
+const formatNumber = require('./formatNumber');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -22,7 +23,7 @@ app.post('/calculate', async (req, res) => {
     const unit = req.body.unit
     const numberValue = parseFloat(req.body.number);
     const [result] = await fetchData(domain, unit, numberValue);
-    const value = result.value;
+    const value = formatNumber(result.value);
     const source = result.source;
     const name = result.name;
 

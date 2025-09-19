@@ -1,5 +1,6 @@
 <%- include('partials/header') %>
-  <h1>Submit a Number</h1>
+  <h1 class="mx-3">Convert standard units to real, practical & intuitive units</h1>
+  <p class="mx-3">A small tool to make the lives of Americans easier and abolish the metric system</p>
   <div class="d-flex justify-content-center align-items-center">
     <form action="/calculate" method="POST" class="w-100" style="max-width: 400px;">
       <div class="form-group mb-3">
@@ -22,13 +23,13 @@
         <input type="number" id="input-value" name="number" min="0.00000001" step="any" required class="form-control">
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Transform</button>
+      <button type="submit" class="btn btn-danger w-100">Transform</button>
     </form>
   </div>
 
   <% if (value !==null) { %>
-    <div class="d-flex justify-content-center mt-4">
-      <div class="p-3 border rounded" style="border-width: 2px; width: 75%;">
+    <div class="d-flex justify-content-center mt-4 my-1">
+      <div class="p-3 border rounded" style="border-width: 2px; width: 75%; background-color: rgba(255, 255, 255, 0.5);">
 
         <% if (domain==="length" ) { %>
           <span id="user-value">
@@ -68,7 +69,7 @@
     <% } %>
 
       <!-- carousel -->
-      <div class="d-flex justify-content-center align-items-center mt-5F">
+      <div class="d-flex justify-content-center align-items-center mt-5F my-5">
         <div id="carouselMemes" class="carousel slide carousel-fade bg-black" style="width: 600px; height: 300px;">
 
           <div class="carousel-inner h-100">
